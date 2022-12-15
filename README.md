@@ -1,3 +1,6 @@
+# fork说明
+有些新的发行版将镜像注册表迁移至 registry.k8s.io，原作者未进行处理，故增加该种情况的分支逻辑
+
 # pullk8s
 
 Pull gcr.io's image for hub.docker.com tools

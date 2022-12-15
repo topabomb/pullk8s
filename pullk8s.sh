@@ -14,10 +14,13 @@ check(){
 
 pull(){
   image=$1
-  imageName=${image/#k8s\.gcr\.io\//}
-  if [ "$image"x == "$imageName"x ]
+  imageName=${image/#k8s\.gcr\.io\//} #正则匹配，如果命中返回前缀部分，未命中原样返回
+  if [ "$image"x == "$imageName"x ] 
   then
     imageName=${image/#gcr\.io\/google_containers\//}
+    if [ "$image"x == "$imageName"x ] ; then
+      imageName=${image/#registry\.k8s\.io\//}
+    fi
   fi
   echo Pull $imageName ...
   if [ "$image"x == "$imageName"x ]
